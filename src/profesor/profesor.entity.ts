@@ -1,5 +1,6 @@
 /* eslint-disable prettier/prettier */
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { PropuestaEntity } from 'src/propuesta/propuesta.entity';
+import { Column, Entity, JoinColumn, OneToMany, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class ProfesorEntity {
@@ -17,4 +18,7 @@ export class ProfesorEntity {
  
  @Column()
  ext: number;
+
+ @OneToMany(() => PropuestaEntity, propuesta => propuesta.profesor)
+ propuestas: PropuestaEntity[];
 }
